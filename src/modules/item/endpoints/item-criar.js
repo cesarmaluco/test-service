@@ -1,29 +1,29 @@
 //IMPORTS************************************
-let Mensagem = require("../mensagem");
+let Item = require("../Item");
 let EndpointDescription = require("../../server/endpoint-description");
-var TratamentoMensagem = require("../model/mensagem");
+var TratamentoItem = require("../model/Item");
 
-/** Cria uma mensagem no banco de dados  */
-function criarMensagem(req, res, next,proxyMensagem) {
+/** Cria uma Item no banco de dados  */
+function criarItem(req, res, next,proxyItem) {
 	var msg = null;
-	if (!proxyMensagem)
+	if (!proxyItem)
 	{
-		msg = new Mensagem(TratamentoMensagem);
+		msg = new Item(TratamentoItem);
 	}
 	else
 	{
-		msg = proxyMensagem;
+		msg = proxyItem;
 	} 	 
-	var reqMensagem = req.body.mensagem;
-	msg.criarMensagem(reqMensagem).then((msgCreated) => {
+	var reqItem = req.body.Item;
+	msg.criarItem(reqItem).then((msgCreated) => {
 		return res.json(msgCreated);
 	}).catch((err) => {
-		return res.send("Erro ao criar mensagem" + err);
+		return res.send("Erro ao criar Item" + err);
 	});
 	return next();
 }
 	
 module.exports = new EndpointDescription(
 	"post",
-	"/api/criarMensagem",
-	criarMensagem);
+	"/api/criarItem",
+	criarItem);

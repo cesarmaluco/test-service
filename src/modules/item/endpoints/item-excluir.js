@@ -1,29 +1,29 @@
 //IMPORTS************************************
-let Mensagem = require("../mensagem");
+let Item = require("../Item");
 let EndpointDescription = require("../../server/endpoint-description");
-var TratamentoMensagem = require("../model/mensagem");
+var TratamentoItem = require("../model/Item");
 
-/** Exclusao de uma mensagem no banco de dados  */
-function excluirMensagem(req, res, next,proxyMensagem) {
+/** Exclusao de uma Item no banco de dados  */
+function excluirItem(req, res, next,proxyItem) {
 	var msg = null;
-	if (!proxyMensagem)
+	if (!proxyItem)
 	{
-		msg = new Mensagem(TratamentoMensagem);
+		msg = new Item(TratamentoItem);
 	}
 	else
 	{
-		msg = proxyMensagem;
+		msg = proxyItem;
 	} 	 
-	var reqMensagem = req.body.mensagem;
-	msg.excluirMensagem(reqMensagem).then((msgDeleted) => {
+	var reqItem = req.body.Item;
+	msg.excluirItem(reqItem).then((msgDeleted) => {
 		return res.json(msgDeleted);
 	}).catch((err) => {
-		return res.send("Erro ao excluir mensagem" + err);
+		return res.send("Erro ao excluir Item" + err);
 	});
 	return next();
 }
 	
 module.exports = new EndpointDescription(
 	"delete",
-	"/api/excluirMensagem",
-	excluirMensagem);
+	"/api/excluirItem",
+	excluirItem);

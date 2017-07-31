@@ -1,10 +1,10 @@
 // IMPORTS /////////////////////////////////////////////////////////////////////
-let criarMensagem = require("./endpoints/mensagem-criar");
-let consultarMensagem = require("./endpoints/mensagem-consultar");
-let atualizarMensagem = require("./endpoints/mensagem-atualizar");
-let excluirMensagem = require("./endpoints/mensagem-excluir");
-let mensagemModel = require("./model/mensagem");
-let BusMensagem = require("./mensagem");
+let criaritem = require("./endpoints/item-criar");
+let consultaritem = require("./endpoints/item-consultar");
+let atualizaritem = require("./endpoints/item-atualizar");
+let excluiritem = require("./endpoints/item-excluir");
+let itemModel = require("./model/item");
+let Busitem = require("./item");
 
 // DERIVED IMPORTS /////////////////////////////////////////////////////////////
 
@@ -12,10 +12,10 @@ let BusMensagem = require("./mensagem");
 
 // EXPORTS /////////////////////////////////////////////////////////////////////
 module.exports = {
-	criarMensagem: criarMensagem,
-	consultarMensagem: consultarMensagem,
-	atualizarMensagem: atualizarMensagem,
-	excluirMensagem: excluirMensagem,
-	mensagemModel : mensagemModel,
-	BusMensagem : BusMensagem
+	criarItem: criaritem,
+	consultarItem: consultaritem,
+	atualizarItem: atualizaritem,
+	excluirItem: excluiritem,
+	itemModel : itemModel,
+	Busitem : Busitem
 };

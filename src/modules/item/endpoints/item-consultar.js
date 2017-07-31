@@ -1,30 +1,30 @@
 //IMPORTS************************************
-let Mensagem = require("../mensagem");
+let Item = require("../Item");
 let EndpointDescription = require("../../server/endpoint-description");
-var TratamentoMensagem = require("../model/mensagem");
+var TratamentoItem = require("../model/Item");
 
 /** Consultar  mensagens no banco de dados  */
-function consultarMensagem(req, res, next,proxyMensagem) {
+function consultarItem(req, res, next,proxyItem) {
 	var msg = null;
-	if (!proxyMensagem)
+	if (!proxyItem)
 	{
-		msg = new Mensagem(TratamentoMensagem);
+		msg = new Item(TratamentoItem);
 	}
 	else
 	{
-		msg = proxyMensagem;
+		msg = proxyItem;
 	} 	 
 	var filtros = req.body.filtros;
-	msg.consultarMensagem(filtros.email)
+	msg.consultarItem(filtros.name)
 		.then((msgs) => {
 			return res.json(msgs);
 		}).catch((err) => {
-			return res.send("Erro ao consultar mensagem" + err);
+			return res.send("Erro ao consultar Item" + err);
 		});
 	return next();
 }
 
 module.exports = new EndpointDescription(
 	"post",
-	"/api/consultarMensagem",
-	consultarMensagem);
+	"/api/consultarItem",
+	consultarItem);

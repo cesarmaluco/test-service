@@ -1,30 +1,30 @@
 //IMPORTS************************************
-let Mensagem = require("../mensagem");
+let Item = require("../Item");
 let EndpointDescription = require("../../server/endpoint-description");
-var TratamentoMensagem = require("../model/mensagem");
+var TratamentoItem = require("../model/Item");
 
-/** Atualização de mensagem   */
-function atualizarMensagem(req, res, next,proxyMensagem) {
+/** Atualização de Item   */
+function atualizarItem(req, res, next,proxyItem) {
 	var msg = null;
-	if (!proxyMensagem)
+	if (!proxyItem)
 	{
-		msg = new Mensagem(TratamentoMensagem);
+		msg = new Item(TratamentoItem);
 	}
 	else
 	{
-		msg = proxyMensagem;
+		msg = proxyItem;
 	} 	 
 	
-	var reqMensagem = req.body.mensagem;
-	msg.atualizarMensagem(reqMensagem).then((msgUpdated) => {
+	var reqItem = req.body.Item;
+	msg.atualizarItem(reqItem).then((msgUpdated) => {
 		return res.json(msgUpdated);
 	}).catch((err) => {
-		return res.send("Erro ao atualizar mensagem" + err);
+		return res.send("Erro ao atualizar Item" + err);
 	});
 	return next();
 }
 	
 module.exports = new EndpointDescription(
 	"put",
-	"/api/atualizarMensagem",
-	atualizarMensagem);
+	"/api/atualizarItem",
+	atualizarItem);
