@@ -1,2 +1,6 @@
 # This is the README
-TODO!
+To install 
+
+- Make sure mongo is up and running
+- Run npm install
+- npm start to start the restify server
