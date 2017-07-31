@@ -1,12 +1,13 @@
 {
   "name": "apl-servicos-canal",
   "version": "0.0.0",
-  "description": "Back-end de Serviços Técnicos de Canal",
+  "description": "Servicos",
   "main": "src/servicosCanal.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "start" : "node src/servicosCanal.js"
   },
-  "author": "Avanade",
+  "author": "Cesar",
   "license": "UNLICENSE",
  
   "devDependencies": {
